@@ -1,7 +1,7 @@
 ### 1. Prepare environment
-- Copy enviroment file
+- Copy environment file
 ```sh
-cp .env.example .env
+make prepare-environments
 ```
 - Fill in (or change) information in `.env` file
 
