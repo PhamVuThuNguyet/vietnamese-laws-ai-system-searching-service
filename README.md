@@ -5,9 +5,9 @@ cp .env.example .env
 ```
 - Fill in information in `.env` file
 
-### 2. Start mysql
+### 2. Start postgres
 ```sh
-docker-compose up -d --build mysql
+docker-compose up -d --build postgres
 ```
 
 ### 3. Build library

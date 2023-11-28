@@ -2,12 +2,12 @@ const { DataSource } = require('typeorm');
 const envConfig = require('../environment.config');
 
 const AppDataSource = new DataSource({
-  type: 'mysql',
-  host: envConfig.mysql_host,
-  port: envConfig.mysql_port,
-  username: envConfig.mysql_user,
-  password: envConfig.mysql_password,
-  database: envConfig.mysql_database,
+  type: envConfig.database_type,
+  host: envConfig.database_host,
+  port: envConfig.database_port,
+  username: envConfig.database_user,
+  password: envConfig.database_password,
+  database: envConfig.database_name,
   synchronize: true,
   logging: false,
   entities: [__dirname + '/../../**/*.entity{.ts,.js}'],

@@ -7,11 +7,12 @@ dotenv.config({ path: path.join(__dirname, '../../.env') });
 const envVarsSchema = Joi.object({
   NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
   PORT: Joi.number().default(3001),
-  MYSQL_HOST: Joi.string().required().description('MYSQL HOST'),
-  MYSQL_PORT: Joi.number().required().description('MYSQL PORT'),
-  MYSQL_DATABASE: Joi.string().required().description('MYSQL DATABASE'),
-  MYSQL_USER: Joi.string().required().description('MYSQL USER'),
-  MYSQL_PASSWORD: Joi.string().required().description('MYSQL PASSWORD'),
+  DATABASE_TYPE: Joi.string().required().description('DATABASE TYPE'),
+  DATABASE_HOST: Joi.string().required().description('DATABASE HOST'),
+  DATABASE_PORT: Joi.number().required().description('DATABASE PORT'),
+  POSTGRES_DB: Joi.string().required().description('DATABASE NAME'),
+  POSTGRES_USER: Joi.string().required().description('DATABASE USERNAME'),
+  POSTGRES_PASSWORD: Joi.string().required().description('DATABASE PASSWORD'),
 });
 
 const { value: envVars, error } = envVarsSchema.validate(process.env);
@@ -19,9 +20,10 @@ const { value: envVars, error } = envVarsSchema.validate(process.env);
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  mysql_host: envVars.MYSQL_HOST,
-  mysql_port: envVars.MYSQL_PORT,
-  mysql_database: envVars.MYSQL_DATABASE,
-  mysql_user: envVars.MYSQL_USER,
-  mysql_password: envVars.MYSQL_PASSWORD,
+  database_type: envVars.DATABASE_TYPE,
+  database_host: envVars.DATABASE_HOST,
+  database_port: envVars.DATABASE_PORT,
+  database_name: envVars.POSTGRES_DB,
+  database_user: envVars.POSTGRES_USER,
+  database_password: envVars.POSTGRES_PASSWORD,
 };
