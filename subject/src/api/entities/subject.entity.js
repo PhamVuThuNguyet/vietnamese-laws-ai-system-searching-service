@@ -1,8 +1,8 @@
 const { EntitySchema } = require('typeorm');
 
 module.exports = new EntitySchema({
-  name: 'Topic',
-  tableName: 'topics',
+  name: 'Subject',
+  tableName: 'subjects',
   columns: {
     id: {
       primary: true,
@@ -11,6 +11,9 @@ module.exports = new EntitySchema({
     },
     name: {
       type: 'varchar',
+    },
+    topic: {
+      type: 'int',
     },
   },
 });

@@ -1,7 +1,7 @@
 const { DataSource } = require('typeorm');
 const envConfig = require('../environment.config');
 
-const AppDataSource = new DataSource({
+const options = {
   type: envConfig.database_type,
   host: envConfig.database_host,
   port: envConfig.database_port,
@@ -13,6 +13,11 @@ const AppDataSource = new DataSource({
   entities: [__dirname + '/../../**/*.entity{.ts,.js}'],
   subscribers: [],
   migrations: [],
-});
+};
 
-module.exports = AppDataSource;
+const dataSource = new DataSource(options);
+
+module.exports = {
+  options,
+  dataSource,
+};

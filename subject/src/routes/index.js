@@ -1,11 +1,11 @@
 const express = require('express');
-const topicRoutes = require('./topics.route');
+const subjectRoutes = require('./subjects.route');
 const router = express.Router();
 
 const defaultRoutes = [
   {
-    path: '/topics',
-    route: topicRoutes,
+    path: '/',
+    route: subjectRoutes,
   },
 ];
 
