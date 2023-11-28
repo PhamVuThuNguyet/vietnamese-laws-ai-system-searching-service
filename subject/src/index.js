@@ -8,8 +8,8 @@ const { logAllRoutes } = require('./utils/misc.utils');
 connectDB()
   .then(() => {
     logger.info('Connected to DATABASE')
-    app.listen(3003, () => {
-      logger.info('App listening on port ' + 3003);
+    app.listen(environmentConfig.port, () => {
+      logger.info('App listening on port ' + environmentConfig.port);
       logAllRoutes(listEndpoints(app));
     });
   })

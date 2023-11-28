@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   postgres:
@@ -15,7 +15,7 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_MULTIPLE_DATABASES="vietnam_laws_subjects", "vietnam_laws_topics"
+      - POSTGRES_MULTIPLE_DATABASES="vietnam_laws_subjects", "vietnam_laws_topics", "vietnam_laws_indexing", "vietnam_laws_charters", "vietnam_laws_legal_documents"
       - POSTGRES_HOST_AUTH_METHOD=trust
     networks:
       - vietnam-laws-network
@@ -25,7 +25,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./topic
-    container_name: vietnam_laws_topic_api
+    container_name: vietnam_laws_topic_service
     ports:
       - "3002:3002"
     restart: always
@@ -46,7 +46,7 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./subject
-    container_name: vietnam_laws_subject_api
+    container_name: vietnam_laws_subject_service
     ports:
       - "3003:3003"
     restart: always
@@ -62,7 +62,70 @@ services:
       - DATABASE_HOST=postgres
     networks:
       - vietnam-laws-network
-  
+
+  indexing:
+    build:
+      dockerfile: Dockerfile
+      context: ./indexing
+    container_name: vietnam_laws_indexing_service
+    ports:
+      - "3004:3004"
+    restart: always
+    depends_on:
+      - "postgres"
+    volumes:
+      - .:/app
+      - /app/indexing/node_modules
+    env_file:
+      - ./indexing/.env
+    environment:
+      - POSTGRES_DB=vietnam_laws_indexing
+      - DATABASE_HOST=postgres
+    networks:
+      - vietnam-laws-network
+
+  charter:
+    build:
+      dockerfile: Dockerfile
+      context: ./charter
+    container_name: vietnam_laws_charter_service
+    ports:
+      - "3005:3005"
+    restart: always
+    depends_on:
+      - "postgres"
+    volumes:
+      - .:/app
+      - /app/charter/node_modules
+    env_file:
+      - ./charter/.env
+    environment:
+      - POSTGRES_DB=vietnam_laws_charters
+      - DATABASE_HOST=postgres
+    networks:
+      - vietnam-laws-network
+
+  legal_document:
+    build:
+      dockerfile: Dockerfile
+      context: ./legal-document
+    container_name: vietnam_laws_legal_document_service
+    ports:
+      - "3006:3006"
+    restart: always
+    depends_on:
+      - "postgres"
+    volumes:
+      - .:/app
+      - /app/legal_document/node_modules
+    env_file:
+      - ./legal-document/.env
+    environment:
+      - POSTGRES_DB=vietnam_laws_legal_documents
+      - DATABASE_HOST=postgres
+    networks:
+      - vietnam-laws-network
+
   api-gateway:
     build:
       dockerfile: Dockerfile
@@ -80,6 +143,9 @@ services:
     environment:
       - TOPIC_HOST=http://topic:3002
       - SUBJECT_HOST=http://subject:3003
+      - INDEXING_HOST=http://indexing:3004
+      - CHARTER_HOST=http://charter:3005
+      - LEGAL_DOCUMENT_HOST=http://legal_document:3006
     networks:
       - vietnam-laws-network
 
