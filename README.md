@@ -1,22 +1,19 @@
+
+## I. Requirements
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [GNU Make](https://www.gnu.org/software/make/)
+
+## II. Installation and running applications
+
 ### 1. Prepare environment
-- Copy enviroment file
+- Copy environment file
 ```sh
-cp .env.example .env
+make prepare-environments
 ```
-- Fill in information in `.env` file
+- Fill in (or change) information in `.env` file
 
-### 2. Start postgres
+### 2. Start app
 ```sh
-docker-compose up -d --build postgres
-```
-
-### 3. Build library
-```sh
-npm install
-```
-
-
-### 4. Run app (mode dev) 
-```sh
-npm run dev
+docker-compose up -d --build
 ```
