@@ -1,3 +1,11 @@
+
+## I. Requirements
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [GNU Make](https://www.gnu.org/software/make/)
+
+## II. Installation and running applications
+
 ### 1. Prepare environment
 - Copy environment file
 ```sh
