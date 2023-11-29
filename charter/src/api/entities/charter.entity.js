@@ -26,5 +26,13 @@ module.exports = new EntitySchema({
       type: 'int',
       nullable: true,
     },
+    note: {
+      type: 'int',
+      nullable: true,
+    },
+    related: {
+      type: 'int',
+      nullable: true,
+    },
   },
 });
