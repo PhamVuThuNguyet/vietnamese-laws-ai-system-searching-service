@@ -10,7 +10,7 @@ const options = {
   password: envConfig.database_password,
   database: envConfig.database_name,
   synchronize: true,
-  logging: false,
+  logging: true,
   entities: [__dirname + '/../../**/*.entity{.ts,.js}'],
   subscribers: [],
   migrationsRun: false,

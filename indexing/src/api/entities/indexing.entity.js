@@ -12,5 +12,20 @@ module.exports = new EntitySchema({
     name: {
       type: 'varchar',
     },
+    subject_id: {
+      type: 'int',
+    },
+    level: {
+      type: 'int',
+      default: 0,
+    },
+    ordinal_number: {
+      type: 'int',
+      nullable: true,
+    },
+    parent_indexing_id: {
+      type: 'int',
+      nullable: true,
+    },
   },
 });
