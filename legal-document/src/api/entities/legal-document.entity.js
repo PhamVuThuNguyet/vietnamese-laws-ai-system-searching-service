@@ -23,7 +23,7 @@ module.exports = new EntitySchema({
       type: 'int',
     },
     issued_date: {
-      type: 'datetime',
+      type: 'varchar',
     },
     issuing_authority: {
       type: 'text',

@@ -8,6 +8,10 @@ class ChartersRepository {
     return charterRepo.find(conditions);
   }
 
+  getOneByCondition(conditions = {}) {
+    return charterRepo.findOne(conditions);
+  }
+
   insertOne(data) {
     return charterRepo.save(data);
   }

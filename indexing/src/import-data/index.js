@@ -1,9 +1,11 @@
 const fs = require('fs');
 const indexingService = require('../api/indexing.service');
+const logger = require('../utils/logger.utils');
 
 const importIndexingData = async () => {
-  for (let i = 1; i < 45; i++) {
-    const importData = JSON.parse(fs.readFileSync(`src/data/phap-dien/${i}.json`, 'utf-8'));
+  logger.info("START IMPORT DATA");
+  for (let i = 0; i < 45; i++) {
+    const importData = JSON.parse(fs.readFileSync(`src/import-data/data/${i}.json`, 'utf-8'));
     const subjects = importData.subjects;
     for (let j = 0; j < subjects.length; j++) {
       const subject = subjects[j];
@@ -16,8 +18,9 @@ const importIndexingData = async () => {
         subject.index[k].indexing_id = newIndex.id;
       }
     }
-    fs.writeFileSync(`src/data/phap-dien/${i}.json`, JSON.stringify(importData));
+    fs.writeFileSync(`src/import-data/data/${i}.json`, JSON.stringify(importData));
   }
+  logger.info("COMPLETE IMPORT DATA");
 };
 
 module.exports = importIndexingData;

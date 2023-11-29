@@ -5,6 +5,10 @@ class ChartersService {
     return chartersRepository.getAllByConditions();
   }
 
+  async getOneByCondition(conditions = {}) {
+    return chartersRepository.getOneByCondition(conditions);
+  }
+
   async createOne(data) {
     return chartersRepository.insertOne(data);
   }
