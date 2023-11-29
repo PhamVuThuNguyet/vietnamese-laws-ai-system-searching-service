@@ -12,7 +12,7 @@ module.exports = new EntitySchema({
     name: {
       type: 'varchar',
     },
-    topic: {
+    topic_id: {
       type: 'int',
     },
   },
