@@ -5,7 +5,13 @@ const topicRepo = dataSource.getRepository(TopicEntity);
 
 class TopicsRepository {
   getAllByConditions(conditions = {}) {
-    return topicRepo.find(conditions);
+    const { page = 1, size = 100, ...restConditions } = conditions;
+
+    return topicRepo.find({
+      where: restConditions,
+      skip: (page - 1) * size,
+      take: size,
+    });
   }
 
   insertOne(data) {

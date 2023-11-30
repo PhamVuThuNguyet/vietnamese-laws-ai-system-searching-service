@@ -5,7 +5,13 @@ const legalDocumentRepo = dataSource.getRepository(LegalDocumentEntity);
 
 class LegalDocumentsRepository {
   getAllByConditions(conditions = {}) {
-    return legalDocumentRepo.find(conditions);
+    const { page = 1, size = 100, ...restConditions } = conditions;
+
+    return legalDocumentRepo.find({
+      where: restConditions,
+      skip: (page - 1) * size,
+      take: size,
+    });
   }
 
   insertOne(data) {

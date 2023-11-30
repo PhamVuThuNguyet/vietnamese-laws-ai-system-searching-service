@@ -3,7 +3,7 @@ const topicService = require('./topics.service');
 class TopicsController {
   async index(req, res) {
     try {
-      const data = await topicService.getAll();
+      const data = await topicService.getAll(req.query);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).send();

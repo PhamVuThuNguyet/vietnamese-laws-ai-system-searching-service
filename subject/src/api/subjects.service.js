@@ -1,8 +1,8 @@
 const subjectsRepository = require('./subjects.repository');
 
 class SubjectsService {
-  async getAll() {
-    return subjectsRepository.getAllByConditions();
+  async getAll(conditions) {
+    return subjectsRepository.getAllByConditions(conditions);
   }
 
   async createOne(data) {

@@ -3,7 +3,7 @@ const indexingService = require('./indexing.service');
 class IndexingController {
   async index(req, res) {
     try {
-      const data = await indexingService.getAll();
+      const data = await indexingService.getAll(req.query);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).send();

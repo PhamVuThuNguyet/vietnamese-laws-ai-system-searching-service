@@ -3,7 +3,7 @@ const subjectsService = require('./subjects.service');
 class SubjectsController {
   async index(req, res) {
     try {
-      const data = await subjectsService.getAll();
+      const data = await subjectsService.getAll(req.query);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).send();

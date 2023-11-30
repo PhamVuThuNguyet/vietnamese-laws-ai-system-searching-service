@@ -5,7 +5,13 @@ const subjectRepo = dataSource.getRepository(SubjectEntity);
 
 class SubjectsRepository {
   getAllByConditions(conditions = {}) {
-    return subjectRepo.find(conditions);
+    const { page = 1, size = 100, ...restConditions } = conditions;
+
+    return subjectRepo.find({
+      where: restConditions,
+      skip: (page - 1) * size,
+      take: size,
+    });
   }
 
   insertOne(data) {
