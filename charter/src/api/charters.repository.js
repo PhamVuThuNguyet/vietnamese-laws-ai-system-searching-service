@@ -5,7 +5,12 @@ const charterRepo = dataSource.getRepository(CharterEntity);
 
 class ChartersRepository {
   getAllByConditions(conditions = {}) {
-    return charterRepo.find(conditions);
+    const { page = 1, size = 100, ...restConditions } = conditions;
+    return charterRepo.find({
+      where: restConditions,
+      skip: (page - 1) * size,
+      take: size,
+    });
   }
 
   insertOne(data) {

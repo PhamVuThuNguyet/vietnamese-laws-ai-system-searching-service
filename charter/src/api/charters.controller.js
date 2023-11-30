@@ -3,9 +3,10 @@ const chartersService = require('./charters.service');
 class ChartersController {
   async index(req, res) {
     try {
-      const data = await chartersService.getAll();
+      const data = await chartersService.getAll(req.query);
       res.status(200).json(data);
     } catch (error) {
+      console.log(error);
       res.status(500).send();
     }
   }
