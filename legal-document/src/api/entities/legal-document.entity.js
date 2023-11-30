@@ -14,15 +14,16 @@ module.exports = new EntitySchema({
     },
     doc_type: {
       type: 'varchar',
+      nullable: true,
     },
     ordinal_number: {
       type: 'int',
       default: 0,
     },
-    year: {
-      type: 'int',
-    },
     issued_date: {
+      type: 'varchar',
+    },
+    effective_date: {
       type: 'varchar',
     },
     issuing_authority: {
@@ -30,6 +31,7 @@ module.exports = new EntitySchema({
     },
     is_expired: {
       type: 'varchar',
+      nullable: true,
     },
     subject_id: {
       type: 'int',
