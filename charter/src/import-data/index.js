@@ -4,7 +4,7 @@ const logger = require('../utils/logger.utils');
 
 const importCharterData = async () => {
   for (let i = 0; i < 45; i++) {
-    logger.log(`========== PROCESS ${i} ===========`);
+    logger.log(`========== IMPORT DATA FOR TOPIC ${i} ===========`);
     const importData = JSON.parse(fs.readFileSync(`src/import-data/data/${i}.json`, 'utf-8'));
     const subjects = importData.subjects;
     for (let j = 0; j < subjects.length; j++) {
@@ -63,7 +63,7 @@ const importCharterData = async () => {
 };
 
 const importNoteAndRelatedData = async () => {
-  for (let i = 6; i < 7; i++) {
+  for (let i = 0; i < 45; i++) {
     logger.log(`========== PROCESS ${i} ===========`);
     const importData = JSON.parse(fs.readFileSync(`src/import-data/data/${i}.json`, 'utf-8'));
     const subjects = importData.subjects;
@@ -81,12 +81,13 @@ const importNoteAndRelatedData = async () => {
               if (currentChildCharter.child) {
                 for (let a = 0; a < currentChildCharter.child.length; a++) {
                   const charter_id = currentChildCharter.child[a].charter_id;
-                  const relatedList = currentChildCharter.child[a].related;
+                  const relatedList = currentChildCharter.child[a].related || [];
                   for (let o = 0; o < relatedList.length; o++) {
-                    if (relatedList[o].link === '#' && relatedList[o].title) {
-                      const foundCharters = await charterService.getOneByCondition({ name: relatedList[o].title });
-                      if (foundCharters) {
-                        relatedList[o].link = foundCharters.id;
+                    delete relatedList[o].axios_id;
+                    if (relatedList[o].link === '#' && relatedList[o].description) {
+                      const foundCharter = await charterService.getOneByCondition({ name: relatedList[o].description });
+                      if (foundCharter) {
+                        relatedList[o].link = foundCharter.id;
                       }
                     }
                   }
@@ -94,15 +95,13 @@ const importNoteAndRelatedData = async () => {
                 }
               } else {
                 const charter_id = currentCharter.child[m].charter_id;
-                const relatedList = currentCharter.child[m].related;
-                if (!relatedList) {
-                  console.log(charter_id, currentCharter.child[m].name);
-                }
+                const relatedList = currentCharter.child[m].related || [];
                 for (let o = 0; o < relatedList.length; o++) {
-                  if (relatedList[o].link === '#' && relatedList[o].title) {
-                    const foundCharters = await charterService.getOneByCondition({ name: relatedList[o].title });
-                    if (foundCharters) {
-                      relatedList[o].link = foundCharters.id;
+                  delete relatedList[o].axios_id;
+                  if (relatedList[o].link === '#' && relatedList[o].description) {
+                    const foundCharter = await charterService.getOneByCondition({ name: relatedList[o].description });
+                    if (foundCharter) {
+                      relatedList[o].link = foundCharter.id;
                     }
                   }
                 }
@@ -111,12 +110,13 @@ const importNoteAndRelatedData = async () => {
             }
           } else {
             const charter_id = currentCharter.charter_id;
-            const relatedList = currentCharter.related;
+            const relatedList = currentCharter.related || [];
             for (let o = 0; o < relatedList.length; o++) {
-              if (relatedList[o].link === '#' && relatedList[o].title) {
-                const foundCharters = await charterService.getOneByCondition({ name: relatedList[o].title });
-                if (foundCharters) {
-                  relatedList[o].link = foundCharters.id;
+              delete relatedList[o].axios_id;
+              if (relatedList[o].link === '#' && relatedList[o].description) {
+                const foundCharter = await charterService.getOneByCondition({ name: relatedList[o].description });
+                if (foundCharter) {
+                  relatedList[o].link = foundCharter.id;
                 }
               }
             }

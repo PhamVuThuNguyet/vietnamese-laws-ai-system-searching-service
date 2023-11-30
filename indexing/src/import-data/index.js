@@ -3,8 +3,9 @@ const indexingService = require('../api/indexing.service');
 const logger = require('../utils/logger.utils');
 
 const importIndexingData = async () => {
-  logger.info("START IMPORT DATA");
+  logger.info('START IMPORT DATA');
   for (let i = 0; i < 45; i++) {
+    logger.info('IMPORT DATA FOR TOPIC', i);
     const importData = JSON.parse(fs.readFileSync(`src/import-data/data/${i}.json`, 'utf-8'));
     const subjects = importData.subjects;
     for (let j = 0; j < subjects.length; j++) {
@@ -20,7 +21,7 @@ const importIndexingData = async () => {
     }
     fs.writeFileSync(`src/import-data/data/${i}.json`, JSON.stringify(importData));
   }
-  logger.info("COMPLETE IMPORT DATA");
+  logger.info('COMPLETE IMPORT DATA');
 };
 
 module.exports = importIndexingData;
