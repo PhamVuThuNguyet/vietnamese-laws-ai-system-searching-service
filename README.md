@@ -30,32 +30,32 @@ make import-data
 
 ## III. API List
 ### 1. Topics API
-- Get all topics: [GET]: `**/api/v1/topics**`
+- Get all topics: [GET]: `/api/v1/topics`
 ### 2. Subjects API
-- Get all subjects: [GET]: `**/api/v1/subjects**`
+- Get all subjects: [GET]: `/api/v1/subjects`
 
 | Params      | Description   | Default     |
 | ----------- | -----------   | ----------- |
 | topic_id    | Topic ID      | null        |
 
 ### 3. Indexing API
-- Get all indexing: [GET]: `**/api/v1/indexing**`
+- Get all indexing: [GET]: `/api/v1/indexing`
 
 | Params      | Description   | Default     |
 | ----------- | -----------   | ----------- |
 | subject_id  | Subject ID    | null        |
 
 ### 4. Charters API
-- Get all indexing: [GET]: `**/api/v1/charters**`
+- Get all indexing: [GET]: `/api/v1/charters`
 
 | Params      | Description                         | Default     |
 | ----------- | -----------                         | ----------- |
 | page        | Page number                         | 1           |
-| size        | Size of ech page                    | 50          |
+| size        | Size of each page                   | 50          |
 | q           | Search text by title or description | ''          |
 
 ### 5. Legal Documents API
-- Get all indexing: [GET]: `**/api/v1/legal-documents**`
+- Get all indexing: [GET]: `/api/v1/legal-documents`
 
 | Params      | Description   | Default     |
 | ----------- | -----------   | ----------- |
