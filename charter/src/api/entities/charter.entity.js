@@ -26,5 +26,17 @@ module.exports = new EntitySchema({
       type: 'int',
       nullable: true,
     },
+    level: {
+      type: 'int',
+      nullable: true,
+    },
+    note: {
+      type: 'json',
+      nullable: true,
+    },
+    related: {
+      type: 'json',
+      nullable: true,
+    },
   },
 });
