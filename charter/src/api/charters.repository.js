@@ -1,16 +1,25 @@
 const { dataSource } = require('../config/database/data-source');
 const CharterEntity = require('./entities/charter.entity');
+const { Like, OR } = require('typeorm');
 
 const charterRepo = dataSource.getRepository(CharterEntity);
 
 class ChartersRepository {
-  getAllByConditions(conditions = {}) {
-    const { page = 1, size = 100, ...restConditions } = conditions;
-    return charterRepo.find({
-      where: restConditions,
+  async getAllByConditions(conditions = {}) {
+    const { page = 1, size = 100, q = '', ...restConditions } = conditions;
+    const [data, total] = await charterRepo.findAndCount({
+      where: [
+        { ...restConditions, name: Like(`%${q}%`) },
+        { ...restConditions, description: Like(`%${q}%`) },
+      ],
       skip: (page - 1) * size,
       take: size,
+      order: {
+        id: 'asc',
+      },
     });
+
+    return { data, total, page, size };
   }
 
   insertOne(data) {
