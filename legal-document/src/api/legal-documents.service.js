@@ -1,8 +1,8 @@
 const legalDocumentsRepository = require('./legal-documents.repository');
 
 class LegalDocumentsService {
-  async getAll() {
-    return legalDocumentsRepository.getAllByConditions();
+  async getAll(conditions) {
+    return legalDocumentsRepository.getAllByConditions(conditions);
   }
 
   async createOne(data) {

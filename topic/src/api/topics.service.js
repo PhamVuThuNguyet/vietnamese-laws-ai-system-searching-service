@@ -1,8 +1,8 @@
 const topicRepository = require('./topics.repository');
 
 class TopicsService {
-  async getAll() {
-    return topicRepository.getAllByConditions();
+  async getAll(conditions) {
+    return topicRepository.getAllByConditions(conditions);
   }
 
   async createOne(data) {

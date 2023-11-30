@@ -1,8 +1,8 @@
 const indexingRepository = require('./indexing.repository');
 
 class IndexingService {
-  async getAll() {
-    return indexingRepository.getAllByConditions();
+  async getAll(conditions) {
+    return indexingRepository.getAllByConditions(conditions);
   }
 
   async createOne(data) {

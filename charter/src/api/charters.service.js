@@ -1,8 +1,8 @@
 const chartersRepository = require('./charters.repository');
 
 class ChartersService {
-  async getAll() {
-    return chartersRepository.getAllByConditions();
+  async getAll(conditions = {}) {
+    return chartersRepository.getAllByConditions(conditions);
   }
 
   async createOne(data) {

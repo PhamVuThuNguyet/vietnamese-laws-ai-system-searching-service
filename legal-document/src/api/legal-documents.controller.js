@@ -3,7 +3,7 @@ const legalDocumentsService = require('./legal-documents.service');
 class LegalDocumentsController {
   async index(req, res) {
     try {
-      const data = await legalDocumentsService.getAll();
+      const data = await legalDocumentsService.getAll(req.query);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).send();
