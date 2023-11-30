@@ -117,7 +117,7 @@ services:
       - "postgres"
     volumes:
       - .:/app
-      - /app/legal_document/node_modules
+      - /app/legal-document/node_modules
     env_file:
       - ./legal-document/.env
     environment:
