@@ -5,6 +5,7 @@ prepare-environments:
 	cd charter && cp .env.example .env
 	cd indexing && cp .env.example .env
 	cd legal-document && cp .env.example .env
+	cd feedback && cp .env.example .env
 
 import-data:
 	cd init-data && psql -U vietnam_laws -h localhost -d vietnam_laws_topics -f vietnam_laws_topics.sql
