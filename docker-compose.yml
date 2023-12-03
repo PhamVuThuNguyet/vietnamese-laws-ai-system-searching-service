@@ -15,7 +15,7 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_MULTIPLE_DATABASES="vietnam_laws_subjects", "vietnam_laws_topics", "vietnam_laws_indexing", "vietnam_laws_charters", "vietnam_laws_legal_documents"
+      - POSTGRES_MULTIPLE_DATABASES="vietnam_laws_subjects", "vietnam_laws_topics", "vietnam_laws_indexing", "vietnam_laws_charters", "vietnam_laws_legal_documents", "vietnam_laws_feedback"
       - POSTGRES_HOST_AUTH_METHOD=trust
     networks:
       - vietnam-laws-network
@@ -125,6 +125,27 @@ services:
       - DATABASE_HOST=postgres
     networks:
       - vietnam-laws-network
+  
+  feedback:
+    build:
+      dockerfile: Dockerfile
+      context: ./feedback
+    container_name: vietnam_laws_feedback_service
+    ports:
+      - "3007:3007"
+    restart: always
+    depends_on:
+      - "postgres"
+    volumes:
+      - .:/app
+      - /app/feedback/node_modules
+    env_file:
+      - ./feedback/.env
+    environment:
+      - POSTGRES_DB=vietnam_laws_feedback
+      - DATABASE_HOST=postgres
+    networks:
+      - vietnam-laws-network
 
   api-gateway:
     build:
@@ -146,6 +167,7 @@ services:
       - INDEXING_HOST=http://indexing:3004
       - CHARTER_HOST=http://charter:3005
       - LEGAL_DOCUMENT_HOST=http://legal_document:3006
+      - FEEDBACK_HOST=http://feedback:3007
     networks:
       - vietnam-laws-network
 
