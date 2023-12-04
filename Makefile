@@ -19,7 +19,7 @@ import-data:
 	cd init-data && psql -U vietnam_laws -h localhost -d vietnam_laws_charters -f vietnam_laws_charters.sql
 	cd init-data && psql -U vietnam_laws -h localhost -d vietnam_laws_legal_documents -f vietnam_laws_legal_documents.sql
 	
-make install:
+install:
 	make prepare-environments
 	docker-compose up -d --build
 	gdown --id 1AT11PWQ_1Jsds-RiMM55fqgT_ynnKsbw
