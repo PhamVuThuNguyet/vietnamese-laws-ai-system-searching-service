@@ -4,15 +4,17 @@
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [GNU Make](https://www.gnu.org/software/make/)
 - [PostgreSQL CLI](https://www.postgresql.org/download/)
+- [gdown](https://github.com/wkentaro/gdown)
+- [Unzip CLI](https://www.tecmint.com/install-zip-and-unzip-in-linux/)
 
 ## II. Installation and running applications
+- Using command **`make install`** or you can follow these below instructions:
 
 ### 1. Prepare environment
 - Copy environment file
 ```sh
 make prepare-environments
 ```
-- Fill in (or change) information in `.env` file
 
 ### 2. Start app
 ```sh
