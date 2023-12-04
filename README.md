@@ -1,5 +1,7 @@
+# Vietnamese Laws AI System Backend Services
 
 ## I. Requirements
+
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [GNU Make](https://www.gnu.org/software/make/)
@@ -8,57 +10,71 @@
 - [Unzip CLI](https://www.tecmint.com/install-zip-and-unzip-in-linux/)
 
 ## II. Installation and running applications
+
 - Using command **`make install`** or you can follow these below instructions:
 
 ### 1. Prepare environment
+
 - Copy environment file
+
 ```sh
 make prepare-environments
 ```
 
 ### 2. Start app
+
 ```sh
 docker-compose up -d --build
 ```
 
 ### 3. Prepare data for database
+
 - Download database import file from this [link](https://drive.google.com/file/d/1AT11PWQ_1Jsds-RiMM55fqgT_ynnKsbw/view)
 - Create `init-data` directory in root directory.
 - Extract and copy all files to `init-data` directory.
+
 ### 4. Import data into database
+
 ```sh
 make import-data
 ```
 
 ## III. API List
+
 ### 1. Topics API
+
 - Get all topics: [GET]: `/api/v1/topics`
+
 ### 2. Subjects API
+
 - Get all subjects: [GET]: `/api/v1/subjects`
 
-| Params      | Description   | Default     |
-| ----------- | -----------   | ----------- |
-| topic_id    | Topic ID      | null        |
+| Params   | Description | Default |
+| -------- | ----------- | ------- |
+| topic_id | Topic ID    | null    |
 
 ### 3. Indexing API
+
 - Get all indexing: [GET]: `/api/v1/indexing`
 
-| Params      | Description   | Default     |
-| ----------- | -----------   | ----------- |
-| subject_id  | Subject ID    | null        |
+| Params     | Description | Default |
+| ---------- | ----------- | ------- |
+| subject_id | Subject ID  | null    |
 
 ### 4. Charters API
+
 - Get all indexing: [GET]: `/api/v1/charters`
 
-| Params      | Description                         | Default     |
-| ----------- | -----------                         | ----------- |
-| page        | Page number                         | 1           |
-| size        | Size of each page                   | 50          |
-| q           | Search text by title or description | ''          |
+| Params | Description                         | Default |
+| ------ | ----------------------------------- | ------- |
+| page   | Page number                         | 1       |
+| size   | Size of each page                   | 50      |
+| q      | Search text by title or description | ''      |
 
 ### 5. Legal Documents API
+
 - Get all indexing: [GET]: `/api/v1/legal-documents`
 
-| Params      | Description   | Default     |
-| ----------- | -----------   | ----------- |
-| subject_id  | Subject ID    | null        |
+| Params     | Description | Default |
+| ---------- | ----------- | ------- |
+| subject_id | Subject ID  | null    |

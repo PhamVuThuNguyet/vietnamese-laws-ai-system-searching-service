@@ -1,3 +1,8 @@
+#  Copyright (c) VKU.NewEnergy.
+
+#  This source code is licensed under the Apache-2.0 license found in the
+#  LICENSE file in the root directory of this source tree.
+
 prepare-environments:
 	cp .env.example .env
 	cd topic && cp .env.example .env
