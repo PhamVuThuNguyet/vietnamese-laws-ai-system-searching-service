@@ -32,3 +32,5 @@ app.listen(3001, () => {
   console.log("Gateway is Listening to Port 3001");
   logAllRoutes(listEndpoints(app));
 });
+
+module.exports = app;
