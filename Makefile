@@ -22,6 +22,6 @@ import-data:
 install:
 	make prepare-environments
 	docker-compose up -d --build
-	gdown --id 1AT11PWQ_1Jsds-RiMM55fqgT_ynnKsbw
+	gdown --id 1eyYEydC-6TQ3uD2WO4cXpR0Odg3f3Pod
 	unzip database.zip -d init-data
 	make import-data
