@@ -14,7 +14,7 @@ services:
       - database:/data/postgres
       - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
     ports:
-      - 7432:5432
+      - 5432:5432
     env_file:
       - .env
     environment:
@@ -42,7 +42,6 @@ services:
     environment:
       - POSTGRES_DB=vietnam_laws_topics
       - DATABASE_HOST=postgres
-      - DATABASE_PORT=7432
     networks:
       - vietnam-laws-network
 
@@ -64,7 +63,6 @@ services:
     environment:
       - POSTGRES_DB=vietnam_laws_subjects
       - DATABASE_HOST=postgres
-      - DATABASE_PORT=7432
     networks:
       - vietnam-laws-network
 
@@ -86,7 +84,6 @@ services:
     environment:
       - POSTGRES_DB=vietnam_laws_indexing
       - DATABASE_HOST=postgres
-      - DATABASE_PORT=7432
     networks:
       - vietnam-laws-network
 
@@ -108,7 +105,6 @@ services:
     environment:
       - POSTGRES_DB=vietnam_laws_charters
       - DATABASE_HOST=postgres
-      - DATABASE_PORT=7432
     networks:
       - vietnam-laws-network
 
@@ -130,7 +126,6 @@ services:
     environment:
       - POSTGRES_DB=vietnam_laws_legal_documents
       - DATABASE_HOST=postgres
-      - DATABASE_PORT=7432
     networks:
       - vietnam-laws-network
 
@@ -152,7 +147,6 @@ services:
     environment:
       - POSTGRES_DB=vietnam_laws_feedback
       - DATABASE_HOST=postgres
-      - DATABASE_PORT=7432
     networks:
       - vietnam-laws-network
 
