@@ -12,6 +12,6 @@ const glossariesController = require('../api/glossaries.controller');
 const router = express.Router();
 
 router.get('/', glossariesController.index);
-router.post('/', glossariesController.create);
+// router.post('/', glossariesController.create);
 
 module.exports = router;
