@@ -24,7 +24,7 @@ make prepare-environments
 docker compose up -d --build
 ```
 #### 3. Prepare data for database
-- Download database import file from this [link](https://drive.google.com/file/d/1eyYEydC-6TQ3uD2WO4cXpR0Odg3f3Pod/view)
+- Download database import file from this [link](https://drive.google.com/file/d/1oFczUDpweAyh3tivdDH3t38L5FSPAZht/view)
 - Create `init-data` directory in root directory.
 - Extract and copy all files to `init-data` directory.
 #### 4. Import data into database

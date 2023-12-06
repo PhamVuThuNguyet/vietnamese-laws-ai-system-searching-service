@@ -27,6 +27,7 @@ app.use("/api/v1/indexing", proxy(process.env.INDEXING_HOST));
 app.use("/api/v1/charters", proxy(process.env.CHARTER_HOST));
 app.use("/api/v1/legal-documents", proxy(process.env.LEGAL_DOCUMENT_HOST));
 app.use("/api/v1/feedback", proxy(process.env.FEEDBACK_HOST));
+app.use("/api/v1/glossaries", proxy(process.env.GLOSSARY_HOST));
 
 app.listen(3001, () => {
   console.log("Gateway is Listening to Port 3001");
