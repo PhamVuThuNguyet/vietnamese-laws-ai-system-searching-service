@@ -15,7 +15,7 @@ const glossaryRepo = dataSource.getRepository(GlossaryEntity);
 
 class GlossariesRepository {
   async getAllByConditions(conditions = {}) {
-    const { page = 1, size = 100, q = '', ...restConditions } = conditions;
+    const { page = 1, size = 50, q = '', ...restConditions } = conditions;
     const [data, total] = await glossaryRepo.findAndCount({
       where: [
         { ...restConditions, term: Like(`%${q}%`) },

@@ -71,3 +71,13 @@ make import-data
 | Params     | Description | Default |
 | ---------- | ----------- | ------- |
 | subject_id | Subject ID  | null    |
+
+#### 6. Glossaries API
+
+- Get all indexing: [GET]: `/api/v1/glossaries`
+
+| Params | Description                         | Default |
+| ------ | ----------------------------------- | ------- |
+| page   | Page number                         | 1       |
+| size   | Size of each page                   | 50      |
+| q      | Search text by term or description | ''      |
