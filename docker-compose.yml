@@ -18,7 +18,7 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_MULTIPLE_DATABASES="vietnam_laws_subjects", "vietnam_laws_topics", "vietnam_laws_indexing", "vietnam_laws_charters", "vietnam_laws_legal_documents", "vietnam_laws_feedback"
+      - POSTGRES_MULTIPLE_DATABASES="vietnam_laws_subjects", "vietnam_laws_topics", "vietnam_laws_indexing", "vietnam_laws_charters", "vietnam_laws_legal_documents", "vietnam_laws_feedback", "vietnam_laws_glossaries"
       - POSTGRES_HOST_AUTH_METHOD=trust
     networks:
       - vietnam-laws-network
@@ -150,6 +150,27 @@ services:
     networks:
       - vietnam-laws-network
 
+  glossary:
+    build:
+      dockerfile: Dockerfile
+      context: ./glossary
+    container_name: vietnam_laws_glossary_service
+    ports:
+      - "3008:3008"
+    restart: always
+    depends_on:
+      - "postgres"
+    volumes:
+      - .:/app
+      - /app/glossary/node_modules
+    env_file:
+      - ./glossary/.env
+    environment:
+      - POSTGRES_DB=vietnam_laws_glossaries
+      - DATABASE_HOST=postgres
+    networks:
+      - vietnam-laws-network
+
   api-gateway:
     build:
       dockerfile: Dockerfile
@@ -171,6 +192,7 @@ services:
       - CHARTER_HOST=http://charter:3005
       - LEGAL_DOCUMENT_HOST=http://legal_document:3006
       - FEEDBACK_HOST=http://feedback:3007
+      - GLOSSARY_HOST=http://glossary:3008
     networks:
       - vietnam-laws-network
 

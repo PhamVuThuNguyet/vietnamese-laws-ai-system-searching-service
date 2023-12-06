@@ -24,7 +24,7 @@ make prepare-environments
 docker compose up -d --build
 ```
 #### 3. Prepare data for database
-- Download database import file from this [link](https://drive.google.com/file/d/1eyYEydC-6TQ3uD2WO4cXpR0Odg3f3Pod/view)
+- Download database import file from this [link](https://drive.google.com/file/d/1oFczUDpweAyh3tivdDH3t38L5FSPAZht/view)
 - Create `init-data` directory in root directory.
 - Extract and copy all files to `init-data` directory.
 #### 4. Import data into database
@@ -71,3 +71,24 @@ make import-data
 | Params     | Description | Default |
 | ---------- | ----------- | ------- |
 | subject_id | Subject ID  | null    |
+
+#### 6. Feedback API
+- Submit a feedback for searching charter: [POST] `/api/v1/feedback`
+
+| Body      | Description   | Required     |
+| ----------- | -----------   | ----------- |
+| charter_title  | Title of charter    | true        |
+| search_keyword  | Keyword when searching    | true        |
+| user_email  | Email of submitter    | false        |
+| response  | Content of feedback    | false        |
+| rate  | Satisfaction of submitter (0 - 5)    | true        |
+
+#### 7. Glossaries API
+
+- Get all indexing: [GET]: `/api/v1/glossaries`
+
+| Params | Description                         | Default |
+| ------ | ----------------------------------- | ------- |
+| page   | Page number                         | 1       |
+| size   | Size of each page                   | 50      |
+| q      | Search text by term or description | ''      |
