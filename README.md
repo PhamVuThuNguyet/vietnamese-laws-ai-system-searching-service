@@ -72,7 +72,18 @@ make import-data
 | ---------- | ----------- | ------- |
 | subject_id | Subject ID  | null    |
 
-#### 6. Glossaries API
+#### 6. Feedback API
+- Submit a feedback for searching charter: [POST] `/api/v1/feedback`
+
+| Body      | Description   | Required     |
+| ----------- | -----------   | ----------- |
+| charter_title  | Title of charter    | true        |
+| search_keyword  | Keyword when searching    | true        |
+| user_email  | Email of submitter    | false        |
+| response  | Content of feedback    | false        |
+| rate  | Satisfaction of submitter (0 - 5)    | true        |
+
+#### 7. Glossaries API
 
 - Get all indexing: [GET]: `/api/v1/glossaries`
 
